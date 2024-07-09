@@ -1,0 +1,27 @@
+Code 
+
+from itertools import combinations, permutations
+def replacements():
+    for comb in combinations(range(10), 8):
+        for perm in permutations(comb):
+            if perm[0] * perm[1] != 0:
+                yield dict(zip('BASELGMS', perm))
+a, b, c = 'BASE', 'BALL', 'GAMES'
+for replacement in replacements():
+    f = lambda x: sum(replacement[e] * 10**i for i, e in enumerate(x[::-1]))
+    if f(a) + f(b) == f(c):
+        print('{} + {} = {}'.format(f(a), f(b), f(c)))
+
+
+Output 
+
+2461 + 2455 = 4916
+2483 + 2455 = 4938
+2461 + 2455 = 4916
+2461 + 2455 = 4916
+7483 + 7455 = 14938
+2483 + 2455 = 4938
+2483 + 2455 = 4938
+7483 + 7455 = 14938
+7483 + 7455 = 14938
+
